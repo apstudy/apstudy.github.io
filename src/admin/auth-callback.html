@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Completing Authentication...</title>
+</head>
+<body>
+  <p>Completing authentication...</p>
+  <script>
+    (function() {
+      try {
+        const params = new URLSearchParams(window.location.search);
+        const authData = params.get('auth');
+        
+        if (!authData) {
+          document.body.innerHTML = '<p>Error: No authentication data</p>';
+          return;
+        }
+        
+        if (!window.opener) {
+          document.body.innerHTML = '<p>Authentication complete. You can close this window.</p>';
+          return;
+        }
+        
+        const decoded = JSON.parse(atob(authData));
+        
+        console.log('[Auth Callback] Sending message:', decoded);
+        console.log('[Auth Callback] Target origin:', window.location.origin);
+        
+        // Try multiple formats Sveltia might accept
+        
+        // Format 1: Sveltia-specific format
+        window.opener.postMessage({
+          type: 'authorization',
+          provider: 'github',
+          token: decoded.token
+        }, window.location.origin);
+        
+        // Format 2: Legacy string format
+        window.opener.postMessage(
+          'authorization:github:success:' + JSON.stringify(decoded),
+          window.location.origin
+        );
+        
+        // Format 3: Direct payload
+        window.opener.postMessage(decoded, window.location.origin);
+        
+        console.log('[Auth Callback] Messages sent');
+        
+        // Don't auto-close so we can debug
+        document.body.innerHTML = '<p>✅ Authentication messages sent. Check main window. <button onclick="window.close()">Close</button></p>';
+        
+      } catch (e) {
+        console.error('[Auth Callback] Error:', e);
+        document.body.innerHTML = '<p>Error: ' + e.message + '</p>';
+      }
+    })();
+  </script>
+</body>
+</html>

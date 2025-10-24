@@ -1,0 +1,43 @@
+{# Header Template - Used on all pages #}
+
+<header class="site-header">
+  <div class="container">
+
+    {# Logo and Navigation #}
+    <div class="header-main">
+      <a href="{{ '/' | url }}" class="logo">
+        <span class="logo-text">{{ site.title }}</span>
+      </a>
+
+      {# Mobile Menu Toggle #}
+      <!-- <button class="mobile-menu-toggle" aria-label="Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button> -->
+
+      {# Main Navigation #}
+      <nav class="main-nav">
+        <a href="{{ '/' | url }}" {% if page.url == "/" %}class="active"{% endif %}>Home</a>
+        <a href="{{ '/games' | url }}" {% if page.url == "/games" %}class="active"{% endif %}>Games</a>
+		{% for page in pages %}
+			<a href="{{ '/' | url ~ page.slug }}/">{{ page.title }}</a>
+		{% endfor %}
+        <!-- <a href="/categories" {% if page.url == "/categories" %}class="active"{% endif %}>Categories</a>
+        <a href="{{ '/about' | url }}" {% if page.url == "/about" %}class="active"{% endif %}>About</a>
+        <a href="{{ '/contact' | url }}" {% if page.url == "/contact" %}class="active"{% endif %}>Contact</a> -->
+      </nav>
+
+      {# Search Bar #}
+      <div class="search-container">
+        <input type="search" 
+			id="searchInput" 
+			placeholder="Search games, pages, categories..."
+			autocomplete="off"
+			aria-label="Search games">
+		<div id="searchDropdown" class="search-dropdown"></div>
+      </div>
+    </div>
+
+  </div>
+</header>

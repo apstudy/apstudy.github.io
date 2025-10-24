@@ -1,0 +1,125 @@
+---
+layout: base.njk
+pagination:
+  data: games
+  size: 1
+  alias: game
+  before: function(data) { return data.filter(g => g && g.slug); }
+permalink: "/games/{{ game.slug }}/"
+eleventyExcludeFromCollections: true
+title: "{{ game.title }} | {{ site.title }}"
+description: "{{ game.description }}"
+---
+
+{# Individual Game Page #}
+
+<div class="game-page">
+
+  {# Breadcrumb #}
+  <div class="container">
+    <nav class="breadcrumb">
+      <a href="{{ '/' | url }}">Home</a> / 
+	  <a href="{{ '/games' | url }}">Games</a> /
+      <span>{{ game.title }}</span>
+    </nav>
+  </div>
+
+  <div class="container">
+    <div class="game-layout">
+      
+      {# Main Content #}
+      <div class="game-main">
+        
+        {# Game Info #}
+        <h1>{{ game.title }}</h1>
+		<div class="game-meta">
+		{% for cat in game.category | asArray %}
+			<a href="{{ ('/category/' ~ (cat | slug)) | url }}" class="tag">
+			<span class="category">
+				 {{ cat | categoryName(categoryMap) }}
+			</span>
+			</a>
+		{% endfor %}
+		</div>
+
+        {# Game Iframe #}
+		<div class="game-container">
+		{% if game.embedType == "javascript" %}
+			{# JavaScript Embed - Use our handler #}
+			<iframe 
+			src="/game-embed.html?game={{ game.url | urlencode }}" 
+			frameborder="0" 
+			allowfullscreen
+			title="{{ game.title }}">
+			</iframe>
+		{% else %}
+			{# Direct iframe URL #}
+			<iframe 
+			src="{{ game.url }}" 
+			frameborder="0" 
+			allowfullscreen
+			title="{{ game.title }}">
+			</iframe>
+		{% endif %}
+		</div>
+
+        {# In-Content Ad #}
+        <div class="ad-container">
+			{% include "components/ad.njk" %}
+        </div>
+
+        {# Description #}
+        <div class="game-description">
+          <h2>About {{ game.title }}</h2>
+          <p>{{ game.description | markdown | safe}}</p>
+          
+          {% if game.instructions %}
+            <h3>How to Play</h3>
+            <div class="instructions">{{ game.instructions | markdown | safe }}</div>
+          {% endif %}
+
+          {# Tags #}
+          <div class="game-tags">
+            {% for tag in game.tags %}
+              <a href="{{ '/tag/' | url ~ tag | slug }}" class="tag">{{ tag }}</a>
+            {% endfor %}
+          </div>
+        </div>
+
+      </div>
+
+      {# Sidebar #}
+      <aside class="game-sidebar">
+        {# Popular Games Widget #}
+        <div class="sidebar-widget">
+          <h3>🔥 Popular Games</h3>
+          <ul>
+            {% for popular in games | limit(5) %}
+              {% if popular.slug %}
+              <li>
+                <a href="{{'/games/' | url ~ popular.slug }}/">
+                  {{ popular.title }}
+                </a>
+              </li>
+              {% endif %}
+            {% endfor %}
+          </ul>
+        </div>
+		<div class="ad-container">
+		<script type="text/javascript">
+			atOptions = {
+				'key' : 'cac7386387f422e0fe04c316763279fa',
+				'format' : 'iframe',
+				'height' : 250,
+				'width' : 300,
+				'params' : {}
+			};
+		</script>
+		<script type="text/javascript" src="//www.highperformanceformat.com/cac7386387f422e0fe04c316763279fa/invoke.js"></script>
+		</div>
+      </aside>
+
+    </div>
+  </div>
+
+</div>

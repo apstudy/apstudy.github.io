@@ -1,0 +1,53 @@
+---
+layout: base.njk
+title: Bro Unblocked!!
+description: Play thousands of free online games instantly. No downloads required!
+---
+
+<div class="homepage">
+  {# Featured Games #}
+  <section class="featured-games">
+    <div class="container">
+      <h2>⭐ Featured Games</h2>
+      <div class="games-grid">
+        {% for game in collections.games %}
+          {% if game.featured %}
+            {% include "components/game-card.njk" %}
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  <div class="ad-container">
+    {% include "components/ad.njk" %}
+  </div>
+
+  {# Categories Showcase #}
+  <section class="categories">
+    <div class="container">
+      <h2>Categories</h2>
+      <div class="categories-grid">
+        {% for category in collections.categories %}
+          <a href="{{ ('/category/' ~ category.slug) | url }}" class="category-box">
+            <span>{{ category.icon }}</span>
+            <h3>{{ category.name }}</h3>
+            <p>{{ category.description }}</p>
+          </a>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  {# All Games Grid #}
+  <section class="all-games">
+    <div class="container">
+      <h2>All Games</h2>
+      <div class="games-grid">
+        {% for game in collections.games %}
+          {% include "components/game-card.njk" %}
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+</div>

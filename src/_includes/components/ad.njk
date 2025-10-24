@@ -1,0 +1,10 @@
+<script type="text/javascript">
+	atOptions = {
+		'key' : '{{ site.adsense }}',
+		'format' : 'iframe',
+		'height' : {{ adHeight | default(90) }},
+		'width' : {{ adWidth | default(728) }},
+		'params' : {}
+	};
+</script>
+<script type="text/javascript" src="//www.highperformanceformat.com/{{ site.adsense }}/invoke.js"></script>

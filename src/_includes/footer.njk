@@ -1,0 +1,42 @@
+{# Footer Template - Used on all pages #}
+
+<footer class="site-footer">
+  <div class="container">
+
+    {# Footer Content Grid #}
+    <div class="footer-content">
+      
+      {# About Section #}
+      <div class="footer-section">
+        <h4>{{ site.title }}</h4>
+        <p>{{ site.description }}</p>
+      </div>
+
+      {# Quick Links #}
+      <div class="footer-section">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="{{ '/' | url }}">Home</a></li>
+          <li><a href="{{ link.url }}" target="_blank">{{ link.label }}</a></li>
+        </ul>
+      </div>
+
+      {# Legal #}
+      <div class="footer-section">
+        <h4>Legal</h4>
+        <ul>
+		  {% for link in site.legalLinks %}
+			<li><a href="{{ link.url | url }}" target="_blank">{{ link.label }}</a><li>
+		  {% endfor %}
+        </ul>
+      </div>
+
+    </div>
+
+    {# Footer Bottom #}
+    <div class="footer-bottom">
+      <p>&copy; {{ currentYear }} {{ site.title }}. All rights reserved.</p>
+    </div>
+
+  </div>
+</footer>
