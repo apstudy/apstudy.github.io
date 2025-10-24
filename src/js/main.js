@@ -6,8 +6,8 @@
 let allContent = null;
 let allResults = [];
 const RESULTS_PER_PAGE = 10;
-const RAW_BASE_URL = '/bros-unblocked/';
-const BASE_URL = RAW_BASE_URL.endsWith('/') ? RAW_BASE_URL : (RAW_BASE_URL + '/');
+// const RAW_BASE_URL = '/bros-unblocked/';
+// const BASE_URL = RAW_BASE_URL.endsWith('/') ? RAW_BASE_URL : (RAW_BASE_URL + '/');
 const DEBOUNCE_DELAY = 300; // ms
 const BUILD_VERSION = (document && document.body && document.body.dataset && document.body.dataset.build) || '0';
 
@@ -100,7 +100,7 @@ async function loadContent() {
   const timeoutId = controller ? setTimeout(() => controller.abort(), 8000) : null;
 
   try {
-    const url = `${BASE_URL}content.json?v=${encodeURIComponent(BUILD_VERSION)}`;
+    const url = `/content.json?v=${encodeURIComponent(BUILD_VERSION)}`;
     const response = await fetch(url, { signal: controller ? controller.signal : undefined });
 
     if (!response || !response.ok) {
@@ -233,11 +233,11 @@ function getResultLink(item) {
 
   switch (item.type) {
     case 'game':
-      return `${BASE_URL}games/${slug}/`;
+      return `$/games/${slug}/`;
     case 'page':
-      return `${BASE_URL}${slug}/`;
+      return `/${slug}/`;
     case 'category':
-      return `${BASE_URL}category/${slug}/`;
+      return `/category/${slug}/`;
     default:
       return '#';
   }
@@ -322,7 +322,7 @@ async function initHeaderSearch() {
       e.preventDefault();
       const query = (e.target && e.target.value && e.target.value.trim()) || '';
       if (query) {
-        window.location.href = `${BASE_URL}search/?q=${encodeURIComponent(query)}`;
+        window.location.href = `/search/?q=${encodeURIComponent(query)}`;
       }
     }
   });
@@ -504,7 +504,7 @@ async function initSearchPageResults() {
         e.preventDefault();
         const newQuery = (e.target && e.target.value && e.target.value.trim()) || '';
         if (newQuery) {
-          window.location.href = `${BASE_URL}search/?q=${encodeURIComponent(newQuery)}`;
+          window.location.href = `/search/?q=${encodeURIComponent(newQuery)}`;
         }
       }
     });

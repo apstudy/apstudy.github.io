@@ -1,78 +1,48 @@
 ---
 layout: base.njk
-permalink: "/games/"
-eleventyCompute:
-  title: "All Games | {{ site.title }}"
-  description: "Browse all {{ games | length }} games in our collection"
+permalink: "/games/{% if pagination.pageNumber > 0 %}page/{{ pagination.pageNumber + 1 }}/{% endif %}"
+pagination:
+  data: collections.games        # paginate the games collection
+  size: 12                       # games per page
+  alias: pageGames               # items available as 'pageGames' in the template
+eleventyComputed:
+  title: "All Games{% if pagination.pageNumber > 0 %} — Page {{ pagination.pageNumber + 1 }}{% endif %} | {{ site.title }}"
+  description: "Browse all {{ collections.games | length }} games{% if pagination.pageNumber > 0 %}, page {{ pagination.pageNumber + 1 }} of {{ pagination.hrefs | length }}{% endif %}"
 ---
+
 <div class="container">
-	<div class="games-header">
-	<h1>All Games</h1>
-	<p class="game-count">{{ games | length }} games available</p>
-	</div>
-	<div id="allGamesContainer" class="games-grid"></div>
-	<div id="gamesPagination" class="pagination"></div>
+  <div class="games-header">
+    <h1>All Games</h1>
+    <p class="game-count">
+      {{ collections.games | length }} total —
+      Page {{ pagination.pageNumber + 1 }} of {{ pagination.hrefs | length }}
+    </p>
+  </div>
+
+  <div class="games-grid">
+    {% for game in pageGames %}
+      {% include "components/game-card.njk" %}
+    {% endfor %}
+  </div>
+
+  {# Pagination nav #}
+  {% set totalPages = pagination.hrefs | length %}
+  {% set current = pagination.pageNumber %}
+  <nav class="pagination">
+    {% if current > 0 %}
+      <a href="{{ pagination.hrefs[current - 1] }}">← Previous</a>
+    {% endif %}
+
+    {% for i in range(0, totalPages - 1) %}
+      {% if i == current %}
+        <span class="current">{{ i + 1 }}</span>
+      {% else %}
+        <a href="{{ pagination.hrefs[i] }}">{{ i + 1 }}</a>
+      {% endif %}
+    {% endfor %}
+
+    {% if current + 1 < totalPages %}
+      <a href="{{ pagination.hrefs[current + 1] }}">Next →</a>
+    {% endif %}
+  </nav>
 </div>
-
-<script>
-const GAMES_PER_PAGE = 10;
-const allGames = {{ games | dump | safe }};
-let currentPage = 1;
-
-function renderGamesPage(page = 1) {
-  currentPage = page;
-  
-  const totalPages = Math.ceil(allGames.length / GAMES_PER_PAGE);
-  const start = (page - 1) * GAMES_PER_PAGE;
-  const pageGames = allGames.slice(start, start + GAMES_PER_PAGE);
-  
-  const container = document.getElementById('allGamesContainer');
-  
-  const html = pageGames.map(game => `
-    <div class="game-card">
-	  <a href="/bros-unblocked/games/${game.slug}/">
-        <img src="/bros-unblocked/${game.image}" alt="${game.title}">
-        <h3>${game.title}</h3>
-        <p class="game-desc">${game.description.substring(0, 100)}...</p>
-        <span class="category-badge">${game.category}</span>
-      </a>
-    </div>
-  `).join('');
-  
-  container.innerHTML = html;
-  renderGamesPagination(page, totalPages);
-}
-
-function renderGamesPagination(currentPage, totalPages) {
-  const paginationContainer = document.getElementById('gamesPagination');
-  let html = '';
-  
-  if (totalPages <= 1) {
-    paginationContainer.innerHTML = '';
-    return;
-  }
-  
-  if (currentPage > 1) {
-    html += `<a href="#" onclick="renderGamesPage(${currentPage - 1}); return false;">← Previous</a>`;
-  }
-  
-  for (let i = 1; i <= totalPages; i++) {
-    if (i === currentPage) {
-      html += `<span class="current">${i}</span>`;
-    } else {
-      html += `<a href="#" onclick="renderGamesPage(${i}); return false;">${i}</a>`;
-    }
-  }
-  
-  if (currentPage < totalPages) {
-    html += `<a href="#" onclick="renderGamesPage(${currentPage + 1}); return false;">Next →</a>`;
-  }
-  
-  paginationContainer.innerHTML = html;
-}
-
-// Initialize
-document.addEventListener('DOMContentLoaded', () => {
-  renderGamesPage(1);
-});
-</script>
