@@ -1,8 +1,6 @@
-local_backend: true
-
 backend:
   name: github
-  repo: BlueWizardDigital/bros-unblocked
+  repo: apstudy/apstudy.github.io
   branch: main
   base_url: https://decap-github-oauth.bluewizard.workers.dev
   auth_endpoint: /auth
