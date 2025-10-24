@@ -31,11 +31,16 @@ module.exports = function(eleventyConfig) {
 	eleventyConfig.addPassthroughCopy("src/admin");
 	eleventyConfig.addPassthroughCopy("src/images");
 	eleventyConfig.addPassthroughCopy("src/game-embed.html");
+	eleventyConfig.addPassthroughCopy("src/robots.txt");
 
 	// collection management
 	eleventyConfig.addCollection("games", function() {
 		const catMap = buildCategoryMap();
-		const gameObjs = readJsonFilesIn(GAMES_DIR);
+		const gameObjs = readJsonFilesIn(GAMES_DIR)
+			.flatMap(g => Array.isArray(g) ? g : [g])
+			.filter(g => g && g.slug);
+
+			console.log("Final game collection:", gameObjs.map(g => g.slug));
 
 		return gameObjs.map(game => {
 		  const slugs = Array.isArray(game.category) ? game.category : (game.category ? [game.category] : []);

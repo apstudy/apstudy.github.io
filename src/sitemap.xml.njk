@@ -1,0 +1,25 @@
+---
+permalink: /sitemap.xml
+eleventyExcludeFromCollections: true
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+{%- set base = "https://quizape.com" -%}
+{%- for p in collections.all -%}
+  {%- if p.url
+        and p.outputPath
+        and (p.data.permalink is not sameas(false))
+        and (not p.data.draft)
+        and ("/admin/" not in p.url)
+        and ("/404" not in p.url)
+        and ("/game-embed/" not in p.url)
+        and ("/content.json" not in p.url)
+  -%}
+  <url>
+    <loc>{{ base }}{{ p.url | url }}</loc>
+    {%- if p.date -%}<lastmod>{{ p.date | dateFilter }}</lastmod>{%- endif -%}
+    <changefreq>weekly</changefreq>
+  </url>
+  {%- endif -%}
+{%- endfor -%}
+</urlset>

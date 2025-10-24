@@ -1,9 +1,10 @@
 ---
 layout: base.njk
 pagination:
-  data: categories
+  data: collections.categories
   size: 1
   alias: category
+  addAllPagesToCollections: true 
 permalink: /category/{{ category.slug }}/
 eleventyCompute:
   title: "{{ category.name }} Games | {{ site.title }}"

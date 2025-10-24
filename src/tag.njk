@@ -4,6 +4,7 @@ pagination:
   data: allTags
   size: 1
   alias: tag
+  addAllPagesToCollections: true
 permalink: /tag/{{ tag | slug }}/
 eleventyCompute:
   title: "Games tagged: {{ tag }} | {{ site.title }}"
