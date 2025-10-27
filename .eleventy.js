@@ -32,6 +32,7 @@ module.exports = function(eleventyConfig) {
 	eleventyConfig.addPassthroughCopy("src/images");
 	eleventyConfig.addPassthroughCopy("src/game-embed.html");
 	eleventyConfig.addPassthroughCopy("src/robots.txt");
+	eleventyConfig.addPassthroughCopy("src/ads.txt");
 
 	// collection management
 	eleventyConfig.addCollection("games", function() {
