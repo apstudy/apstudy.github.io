@@ -15,5 +15,5 @@
     "io game"
   ],
   "featured": true,
-  "instructions": "**==Arrow keys or WASD to move==**\n\n**==Up arrow to jump==**\n\n**==Enter or Space to attack. ==**\n\n**==Double up arrow for pinning==**"
+  "instructions": "Arrow keys or WASD to move\n\nUp arrow to jump\n\nEnter or Space to attack\n\nDouble up arrow for pinning"
 }
