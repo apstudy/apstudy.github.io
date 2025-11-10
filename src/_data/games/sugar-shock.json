@@ -1,0 +1,19 @@
+{
+  "slug": "sugar-shock",
+  "title": "Sugar Shock",
+  "description": "Sugarshock.io is a fast-paced, one-minute **multiplayer match-3 game** where every second counts. Race against the clock to **match colorful candies**, trigger powerful combos, and climb your way to the top of the scoreboard. Whether you’re battling players around the world or challenging your friends, Sugarshock.io delivers quick, addictive gameplay perfect for both casual sessions and competitive play.\n\nEach match lasts just **60 seconds**, so you’ll need sharp reflexes and smart moves to rack up huge scores. Use special power-ups like the **Sugar Cube** and **Exploding Sweets** to clear massive sections of the board, create chain reactions, and push your score even higher. Track your progress on **real-time leaderboards**, and join the **Candy Club** to cement your everlasting high score.",
+  "embedType": "iframe",
+  "url": "https://sugarshock.io",
+  "image": "/images/games/sugar_shock_960x540.png",
+  "category": [
+    "mobile-games"
+  ],
+  "tags": [
+    "match 3",
+    "casual game",
+    "io games",
+    "mobile games"
+  ],
+  "featured": false,
+  "instructions": "Slide candies into new positions to match 3 or more in a row to remove them."
+}
