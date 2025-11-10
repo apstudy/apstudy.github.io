@@ -16,6 +16,6 @@
     "io game",
     "free game"
   ],
-  "featured": true,
+  "featured": false,
   "instructions": "WASD or Arrow keys to control your player\n\nSpace to tackle or shoot"
 }
