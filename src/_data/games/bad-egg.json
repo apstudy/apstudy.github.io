@@ -1,0 +1,17 @@
+{
+  "slug": "bad-egg",
+  "title": "Bad Egg",
+  "description": "Badegg.io is a free, browser-based arcade shooter where you play as a lone hard-boiled hero egg fighting off endless waves of zombie chickens. Your mission is simple: survive the oncoming flock and make it to the rescue chopper before you’re totally clucked.",
+  "embedType": "iframe",
+  "url": "https://badegg.io/",
+  "image": "/images/games/badEgg_Ad-960x540.png",
+  "category": [
+    "mobile-games"
+  ],
+  "tags": [
+    "io game",
+    "mobile game"
+  ],
+  "featured": false,
+  "instructions": "Shoot zombie chickens, collect gold, escape on the chopper"
+}
