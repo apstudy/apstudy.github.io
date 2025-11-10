@@ -15,6 +15,6 @@
     "unblocked game",
     "io game"
   ],
-  "featured": true,
+  "featured": false,
   "instructions": "Arrow keys or WASD to move\n\nUp arrow to jump\n\nEnter or Space to attack\n\nDouble up arrow for pinning"
 }
