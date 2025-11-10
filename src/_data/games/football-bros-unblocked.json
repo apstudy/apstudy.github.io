@@ -7,7 +7,8 @@
   "image": "/images/games/add_footballBros_800x400.png",
   "category": [
     "sports",
-    "mobile-games"
+    "mobile-games",
+    "io-games"
   ],
   "tags": [
     "sports",
@@ -17,5 +18,5 @@
     "free"
   ],
   "featured": true,
-  "instructions": "Arrow keys or WASD to control your bro. \n\nSpace bar will throw a pass, dive, or stiff arm, depending on the situation."
+  "instructions": "Arrow keys or WASD to control your bro.\n\nSpace bar will throw a pass, dive, or stiff arm, depending on the situation."
 }
