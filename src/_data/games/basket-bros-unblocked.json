@@ -16,7 +16,7 @@
     "multiplayer",
     "sports game"
   ],
-  "featured": true,
+  "featured": false,
   "instructions": "CONTROLS\nWASD or Arrows to move, Space Bar to shoot\n\n### How do you play BasketBros?\n\nCONTROLS\nWASD or Arrows to move, Space Bar to shoot",
   "id": "puzzle-master-002"
 }
