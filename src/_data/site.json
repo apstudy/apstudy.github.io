@@ -1,6 +1,6 @@
 {
-  "title": "Bros Unblocked!!",
-  "description": "The ultimate game portal",
+  "title": "AP Study",
+  "description": "The ultimate study portal",
   "logo": "/images/logo.png",
   "hero": "/images/games/basket-bros.webp",
   "socialLinks": [
@@ -27,12 +27,12 @@
   "formspreeId": "mgvngwbg",
   "quickLinks": [
     {
-      "url": "/about/",
-      "label": "About"
+      "label": "About",
+      "url": "/about/"
     },
     {
-      "url": "/contact/",
-      "label": "Contact"
+      "label": "Contact",
+      "url": "/contact/"
     }
   ]
 }
