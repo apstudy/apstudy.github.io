@@ -1,0 +1,21 @@
+{
+  "slug": "bike-bros",
+  "title": "Bike Bros",
+  "description": "What happens when you cross a downhill racer with a trick game? Bike Bros. Tear down mountain trails in low-poly 3D, timing wheelie charges and boosts to shave seconds off your run while dodging drops, jumps, and tight corners along the way. When you're done chasing the clock, switch into Trick Mode and turn the same trails into your personal stunt park where flips, spins, and combos are all fair game, no timer required. Ride alone to sharpen your skills, or bring up to 5 friends online for co-op descents and bragging-rights trick battles. The controls are simple enough to pick up in seconds, but there's real depth in mastering your wheelie timing and boost management. Colorful, fast, and endlessly replayable, Bike Bros is free to play and easy to fall into for five minutes or five hours.",
+  "embedType": "iframe",
+  "url": "https://bikebros.io",
+  "image": "/images/games/bikebros_300x250.png",
+  "category": [
+    "io-games",
+    "sports"
+  ],
+  "tags": [
+    "io game",
+    "sports game",
+    "bike racing",
+    "downhill",
+    "mountain bike"
+  ],
+  "featured": false,
+  "instructions": "- **Arrow keys** — Move / Air Tricks\n- **Down Arrow** — Wheelie (hold to charge)\n- **Space** — Boost\n- **Shift** — Brake"
+}
