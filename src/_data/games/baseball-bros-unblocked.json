@@ -17,6 +17,6 @@
     "online",
     "free"
   ],
-  "featured": true,
+  "featured": false,
   "instructions": "Move with **arrow keys or WASD**\n\nUse the **space bar** to pitch, slide, or steal"
 }
